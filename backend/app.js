@@ -11,12 +11,9 @@ const loginRouter = require('./controllers/loginRouter');
 
 mongoose.set('strictQuery', false)
 
-const mongooseConnect =  async () => {
-   const connect = await mongoose.connect(MONGO_URI)
-   connect.then(() => console.log("Connected to mongodb successfully"))
-   connect.catch((error) => console.error("error connecting to mongodb", error))
-}
-mongooseConnect();
+mongoose.connect(MONGO_URI)
+.then(() => console.log("Connected to mongodb successfully"))
+.catch((error) => console.error("error connecting to mongodb", error))
 
 app.use(cors())
 app.use(express.static('dist'));
