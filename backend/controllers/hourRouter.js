@@ -48,7 +48,9 @@ hourRouter.post("/", async (req, res) => {
   user.hours = user.hours.concat(result._id);
   await user.save();
 
-  res.status(201).json(result);
+  const newUserHours = await user.populate('hours');  
+
+  res.status(201).json(newUserHours.hours);
 });
 
 hourRouter.delete("/:id", async (req, res) => {

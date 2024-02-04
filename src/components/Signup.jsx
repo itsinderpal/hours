@@ -1,3 +1,4 @@
+import {Link} from 'react-router-dom'
 
 const Signup = ({signup, setSignup, setIsSigningUp, handleSignup, error}) => {
     return (
@@ -18,7 +19,7 @@ const Signup = ({signup, setSignup, setIsSigningUp, handleSignup, error}) => {
         <button onClick={handleSignup} className='self-center'>Signup</button>
         {error && <span className='my-2'>error</span>}
       </div>
-      <div className="underline cursor-pointer" onClick={() => setIsSigningUp(false)}>Logging in?</div>
+      <Link to="/"><div className="underline cursor-pointer" onClick={() => setIsSigningUp(false)}>Logging in?</div></Link>
         </>
     )
 }
