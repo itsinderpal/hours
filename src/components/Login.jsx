@@ -1,4 +1,6 @@
 
+import {Link} from 'react-router-dom'
+
 const Login = ({login, setLogin, handleLogin, error, setIsSigningUp}) => {
     return (
         <>
@@ -12,9 +14,9 @@ const Login = ({login, setLogin, handleLogin, error, setIsSigningUp}) => {
         <input type="password" name="password" id="password" className='w-1/2 px-1 rounded-md outline-none' value={login.password} onChange={(e) => setLogin({...login, password: e.target.value})}/>
         </div>
         <button onClick={handleLogin} className='self-center'>Login</button>
-        {error && <span className='my-2'>error</span>}
+        {error && <span className='my-2'>{error}</span>}
       </div>
-      <div className="underline cursor-pointer" onClick={() => setIsSigningUp(true)}>Signing up?</div>
+      <Link to="/signup"><div className="underline cursor-pointer" onClick={() => setIsSigningUp(true)}>Signing up?</div></Link>
         </>
     )
 }
