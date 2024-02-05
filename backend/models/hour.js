@@ -19,6 +19,9 @@ hourSchema.set('toJSON', {
     }
 })
 
+async () => await mongoose.connect(MONGO_URI)();
+console.log("connected from model");
+
 const Hour = mongoose.model('Hour', hourSchema)
 
 module.exports = Hour;

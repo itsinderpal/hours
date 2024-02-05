@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator')
+const uniqueValidator = require('mongoose-unique-validator');
+const { MONGO_URI } = require('../utils/config');
 
 const userSchema = new mongoose.Schema({
     username: {
@@ -27,6 +28,9 @@ userSchema.set('toJSON', {
         delete returnedObj.passwordHash;
     }
 })
+
+async () => await mongoose.connect(MONGO_URI)();
+console.log("connected from model");
 
 const User = mongoose.model('User', userSchema);
 

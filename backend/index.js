@@ -6,12 +6,17 @@ const {MONGO_URI} = require('./utils/config');
 mongoose.set('strictQuery', false)
 
 const runDb = async () => {
-   await mongoose.connect(MONGO_URI)
-   console.log("connected to mongodb now");
+   const res = mongoose.connect(MONGO_URI)
+    res.then(() => {
+       console.log("connected to mongodb now");
+       app.listen(PORT, () => {
+        console.log(`Server listening on port ${PORT}`);
+    })
+    })
 }
 
 runDb().catch(err => console.error(err))
 
-app.listen(PORT, () => {
-    console.log(`Server listening on port ${PORT}`);
-})
+// app.listen(PORT, () => {
+//     console.log(`Server listening on port ${PORT}`);
+// })
